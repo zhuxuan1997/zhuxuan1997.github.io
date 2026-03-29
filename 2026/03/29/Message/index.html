@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="学习UP主（十月的寒流）WPF教学视频 链接 目的为了方便管理多个ViewModel之间的通信，Event Aggregator(Prism中的事件聚合概念) 实现一个简易的 Event AggregatorEventAggregator类 123456789101112131415161718192021222324252627282930class EventAggregator&#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信">
+<meta property="og:url" content="http://example.com/2026/03/29/Message/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习UP主（十月的寒流）WPF教学视频 链接 目的为了方便管理多个ViewModel之间的通信，Event Aggregator(Prism中的事件聚合概念) 实现一个简易的 Event AggregatorEventAggregator类 123456789101112131415161718192021222324252627282930class EventAggregator&#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-29T05:41:11.905Z">
+<meta property="article:modified_time" content="2026-03-29T06:57:47.741Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Message" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/03/29/Message/" class="article-date">
+  <time class="dt-published" datetime="2026-03-29T05:41:11.905Z" itemprop="datePublished">2026-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习UP主（十月的寒流）WPF教学视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BT411R7oK/?spm_id_from=333.788.videopod.sections&vd_source=9a1cf925e00a5527783f52c8f7083dee">链接</a></p>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>为了方便管理多个ViewModel之间的通信，Event Aggregator(Prism中的事件聚合概念)</p>
+<h3 id="实现一个简易的-Event-Aggregator"><a href="#实现一个简易的-Event-Aggregator" class="headerlink" title="实现一个简易的 Event Aggregator"></a>实现一个简易的 Event Aggregator</h3><p>EventAggregator类</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">EventAggregator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> EventAggregator Instance &#123; <span class="keyword">get</span>; &#125; = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">record</span> <span class="title">MessageReceiver</span>(<span class="title">object</span> <span class="title">Receiver</span>, <span class="title">Action</span>&lt;<span class="title">object</span>&gt; <span class="title">Method</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  Dictionary&lt;Type, List&lt;MessageReceiver&gt;&gt; _events = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Register</span>&lt;<span class="title">TMessage</span>&gt;(<span class="params"><span class="built_in">object</span> receiver, Action&lt;TMessage&gt; method</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> type = <span class="keyword">typeof</span>(TMessage);</span><br><span class="line">        <span class="keyword">if</span>(!_events.ContainsKey(type))</span><br><span class="line">            _events[type] = <span class="keyword">new</span> List&lt;MessageReceiver&gt;();</span><br><span class="line">        _events[type].Add(<span class="keyword">new</span> MessageReceiver(receiver, msg =&gt; method((TMessage)msg)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span>&lt;<span class="title">TMessage</span>&gt;(<span class="params">TMessage message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> type = <span class="keyword">typeof</span>(TMessage);</span><br><span class="line">        <span class="keyword">if</span>(!_events.ContainsKey(type))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">foreach</span>(<span class="keyword">var</span> rec <span class="keyword">in</span> _events[type])</span><br><span class="line">            &#123;</span><br><span class="line">            rec.Method.Invoke(message! );</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>消息类</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">MessageReceiver</span>&lt;<span class="title">TMessage</span>&gt;</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">MessageReceiver</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        EventAggregator.Instance.Register&lt;TMessage&gt;(<span class="keyword">this</span>, HandleMessage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">HandleMessage</span>(<span class="params">TMessage message</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">MessageReceiver</span> : <span class="title">MessageReceiver</span>&lt;<span class="title">StringMessage</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">HandleMessage</span>(<span class="params">StringMessage message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Received  String message: <span class="subst">&#123;message.Message&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">NumberReceiver</span> : <span class="title">MessageReceiver</span>&lt;<span class="title">NumberMessage</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">HandleMessage</span>(<span class="params">NumberMessage message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Received Number  message: <span class="subst">&#123;message.Number&#125;</span> + 999&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">record</span> <span class="title">StringMessage</span>(<span class="title">string</span> <span class="title">Message</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">record</span> <span class="title">NumberMessage</span>(<span class="title">int</span> <span class="title">Number</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="WPF实战"><a href="#WPF实战" class="headerlink" title="WPF实战"></a>WPF实战</h3><p>Github链接<br>[链接]<a target="_blank" rel="noopener" href="https://github.com/BYJRK/MessengerDemo">https://github.com/BYJRK/MessengerDemo</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/03/29/Message/" data-id="cuidLsIuHcymoEBNNguC6KuL1" data-title="如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/03/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何在WPF程序中实现RBAC权限控制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/03/29/Message/">如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/25/hello-world/">如何在WPF程序中实现RBAC权限控制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/23/test/">朱玄的第一篇博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
