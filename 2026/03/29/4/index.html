@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CommunityToolkit.Mvvm额外技巧补充 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="学习UP主（十月的寒流）WPF教学视频 链接 不使用CommunityToolkit.Mvvm时的样子123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051public class ViewModeBase : InotifyProPertyChanged&#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CommunityToolkit.Mvvm额外技巧补充">
+<meta property="og:url" content="http://example.com/2026/03/29/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习UP主（十月的寒流）WPF教学视频 链接 不使用CommunityToolkit.Mvvm时的样子123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051public class ViewModeBase : InotifyProPertyChanged&#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-29T07:17:59.347Z">
+<meta property="article:modified_time" content="2026-03-29T08:31:41.867Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/03/29/4/" class="article-date">
+  <time class="dt-published" datetime="2026-03-29T07:17:59.347Z" itemprop="datePublished">2026-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CommunityToolkit.Mvvm额外技巧补充
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习UP主（十月的寒流）WPF教学视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1RT411s726?spm_id_from=333.788.videopod.sections&vd_source=9a1cf925e00a5527783f52c8f7083dee">链接</a></p>
+<h3 id="不使用CommunityToolkit-Mvvm时的样子"><a href="#不使用CommunityToolkit-Mvvm时的样子" class="headerlink" title="不使用CommunityToolkit.Mvvm时的样子"></a>不使用CommunityToolkit.Mvvm时的样子</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ViewModeBase</span> : <span class="title">InotifyProPertyChanged</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler? PropertyChanged;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPropertyChanged</span>(<span class="params"><span class="built_in">string</span> propertyName</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        PropertyChanged?.Invoke(<span class="keyword">this</span>,<span class="keyword">new</span> PropertyChangedEventArgs(propertyName));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MainMindowViewModel</span> : <span class="title">ViewModeBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> title;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Title</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> =&gt; title;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(title != <span class="keyword">value</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                title = <span class="keyword">value</span>;</span><br><span class="line">                OnPropertyChanged(<span class="keyword">nameof</span>(Title));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">### 使用CommunityToolkit.Mvvm时的样子</span></span><br><span class="line"></span><br><span class="line">```csharp</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">MainWindowViewModel</span> : <span class="title">ObservableObject</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">ObservableProperty</span>]</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> title = <span class="string">&quot;Hello, world !&quot;</span>;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">ObservableProperty</span>]</span><br><span class="line">    [<span class="meta">NotifyCanExecuteChangeFor(nameof(ButtonClickCommand))</span>]</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> isEnabled;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">RelayCommad(CanExecute = nameof(CanButtonClick))</span>]</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task <span class="title">ButtonClickAsync</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> Task.Delay(<span class="number">1500</span>);</span><br><span class="line">        Title = <span class="string">&quot;Goodbye&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="built_in">bool</span> <span class="title">CanButtonClick</span>()</span> =&gt; IsEnabled;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="CommunityToolkit-Mvvm对于Json序列化的独特需求"><a href="#CommunityToolkit-Mvvm对于Json序列化的独特需求" class="headerlink" title="CommunityToolkit.Mvvm对于Json序列化的独特需求"></a>CommunityToolkit.Mvvm对于Json序列化的独特需求</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">ViewModel</span> : <span class="title">ObservableObject</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">ObservableProperty</span>]</span><br><span class="line">    [<span class="meta">property: JsonPropertyName(<span class="string">&quot;FullTitle&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> title = <span class="string">&quot;Hello, world !&quot;</span>;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">ObservableProperty</span>]</span><br><span class="line">    [<span class="meta">property: JsonIgnore</span>]</span><br><span class="line">    Guid isEnabled;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="无法改变Model类时-该怎么通过其他的类去绑定Model里的属性实现"><a href="#无法改变Model类时-该怎么通过其他的类去绑定Model里的属性实现" class="headerlink" title="无法改变Model类时, 该怎么通过其他的类去绑定Model里的属性实现"></a>无法改变Model类时, 该怎么通过其他的类去绑定Model里的属性实现</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Model</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name&#123;<span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age&#123;<span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Address&#123;<span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">ObservableModel</span> : <span class="title">ObservableObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> Model model;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> =&gt; model.Name;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">set</span> =&gt; SetProperty(model.Name,<span class="keyword">value</span>,model, (Model model,<span class="built_in">string</span> name) =&gt; model.Name = name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ObservableModel</span>(<span class="params">Model model</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.model = model;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="RelayCommand-配合-CancellationToken取消令牌使用-实现Button取消逻辑"><a href="#RelayCommand-配合-CancellationToken取消令牌使用-实现Button取消逻辑" class="headerlink" title="RelayCommand 配合 CancellationToken取消令牌使用 实现Button取消逻辑"></a>RelayCommand 配合 CancellationToken取消令牌使用 实现Button取消逻辑</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">RelayCommad(CanExecute = nameof(IsActive), InCludeCancelCommand = true)</span>]</span><br><span class="line"><span class="function"><span class="keyword">async</span> Task <span class="title">FooAsync</span>(<span class="params">CancellationToken token</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> Task.Delay(<span class="number">2500</span>, token);</span><br><span class="line">        Message  += <span class="string">&quot;world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(OperationCanceledException)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ContinueWith 与 IsCompletedSuccessfully</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">RelayCommad(CanExecute = nameof(IsActive), InCludeCancelCommand = true)</span>]</span><br><span class="line"><span class="function"><span class="keyword">async</span> Task <span class="title">FooAsync</span>(<span class="params">CancellationToken token</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">return</span> Task.Delay(<span class="number">2500</span>, token)</span><br><span class="line">       .ContinueWith(Task t =&gt;</span><br><span class="line">       &#123;</span><br><span class="line">        <span class="keyword">if</span>(t.IsCompletedSuccessfully)</span><br><span class="line">            Message  += <span class="string">&quot;world&quot;</span>;</span><br><span class="line">       &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(OperationCanceledException)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CommunityToolkit-Mvvm中-Messenger-中的-channel-用来区分不同的消息类型"><a href="#CommunityToolkit-Mvvm中-Messenger-中的-channel-用来区分不同的消息类型" class="headerlink" title="CommunityToolkit.Mvvm中 Messenger 中的 channel 用来区分不同的消息类型"></a>CommunityToolkit.Mvvm中 Messenger 中的 channel 用来区分不同的消息类型</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/03/29/4/" data-id="cuidjUfHHs5gdlmGUTuo6FW0X" data-title="CommunityToolkit.Mvvm额外技巧补充" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/03/29/Message/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/03/29/4/">CommunityToolkit.Mvvm额外技巧补充</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/29/Message/">如何使用 CommunityToolkit.Mvvm 中的 Messenger 来进行 ViewModel 之间的通信</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/25/hello-world/">如何在WPF程序中实现RBAC权限控制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/03/23/test/">朱玄的第一篇博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
